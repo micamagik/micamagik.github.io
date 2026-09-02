@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Stone Catalogue ✦ Mica Magik</title>
+<meta name="description" content="Every stone in the collection — what it actually is, where it forms, and what the old traditions say about it. Herkimer, shungite, Welo opal, labradorite, tourmaline and more.">
+<meta property="og:title" content="The Stone Catalogue ✦ Mica Magik">
+<meta property="og:description" content="What each stone actually is, where it forms, and what the traditions say — with what's currently on the shelf.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://micamagik.github.io/catalogue.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=IBM+Plex+Mono:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mica.css">
+<style>
+  .stone{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px;
+    background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));transition:.2s}
+  .stone[open]{border-color:var(--ac,var(--pink))}
+  .stone summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;align-items:baseline;
+    gap:12px;flex-wrap:wrap}
+  .stone summary::-webkit-details-marker{display:none}
+  .stone summary:hover .nm{color:var(--ac,var(--pink))}
+  .stone .nm{font-family:var(--arcade);font-weight:700;font-size:.92rem;letter-spacing:.04em;
+    text-transform:uppercase;transition:.2s}
+  .stone .sci{font-family:var(--mono);font-size:.74rem;color:var(--pearl-dim);font-style:italic}
+  .stone .cnt{margin-left:auto;font-family:var(--pixel);font-size:.52rem;letter-spacing:.14em;
+    color:var(--ac,var(--pearl-dim));text-transform:uppercase;white-space:nowrap}
+  .stone .body{padding:0 18px 18px}
+  .stone .lab{font-family:var(--pixel);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cyan);margin:14px 0 6px}
+  .stone .lab.lore{color:var(--gold)}
+  .stone p{color:#cfc8e6;font-size:.9rem;margin-bottom:0}
+  .stone .grid{margin-top:16px}
+  .idx{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+  .idx a{font-family:var(--pixel);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--pearl-dim);padding:6px 11px;border-radius:999px;border:1px solid var(--line);transition:.18s}
+  .idx a:hover{color:var(--void);background:var(--pearl);border-color:var(--pearl)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="bar">
+  <a class="brand holo" href="index.html">Mica Magik</a>
+  <nav>
+    <a href="index.html">Shop</a>
+    <a href="catalogue.html" aria-current="page">Catalogue</a>
+    <a href="guides.html">Guides</a>
+    <a href="https://www.youtube.com/@micamagik" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.themysticalspiralstore.com" target="_blank" rel="noopener sponsored">Store ↗</a>
+  </nav>
+</div>
+
+<header class="wrap narrow" style="text-align:center;padding:clamp(26px,5vw,52px) 22px 0">
+  <h1 class="holo">The Stone Catalogue</h1>
+  <div class="tag">✦ What it is · Where it forms · What they say ✦</div>
+  <p class="lede">Every stone in the collection, twice over. Once as a mineral — what it's
+    made of and how it got that way. Once as it has been described for centuries, which is
+    a different kind of true.</p>
+  <div class="idx" id="idx"></div>
+  <div class="rule"></div>
+</header>
+
+<main class="wrap narrow">
+  <div id="stones" style="margin-top:clamp(24px,4vw,38px)"></div>
+
+  <section class="yt-band">
+    <h2>See them in hand</h2>
+    <p>Close looks at the stones — colour, flash and inclusions, the things a photo flattens.</p>
+    <div class="cta-row">
+      <a class="btn yt" href="https://www.youtube.com/@micamagik" target="_blank" rel="noopener">▶ @micamagik</a>
+      <a class="btn ghost" href="guides.html">Read the guides →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="asof" id="asof"></div>
+  <div>Every piece ships from The Mystical Spiral Store.</div>
+  <p class="disclosure">Traditional and metaphysical associations are recorded here as folklore
+    and belief, not as physical or medical fact. Prices and availability are a snapshot —
+    always check the store page before buying.</p>
+</footer>
+
+<script src="products.js"></script>
+<script src="mica.js"></script>
+<script>
+/* Each entry is written twice on purpose: `what` is verifiable mineralogy,
+   `lore` is the tradition. Keeping them in separate fields — and separately
+   labelled on the page — means the folklore never gets presented as fact. */
+const STONES = [
+  { n:'Clear Quartz', s:'Silicon dioxide · SiO₂', kw:['clear quartz','crystal quartz'], ac:'var(--cyan)',
+    what:'The most common crystal-forming mineral on Earth, and one of the hardest things you will handle casually — 7 on the Mohs scale. Quartz is piezoelectric: squeeze it and it generates a small voltage, which is why a sliver of it keeps time in a watch.',
+    lore:'Called the master stone and the blank page. Traditions treat it as an amplifier rather than a specialist — something that lends its clarity to whatever sits beside it.' },
+
+  { n:'Herkimer Diamond', s:'Double-terminated quartz · New York', kw:['herkimer'], ac:'var(--pearl)',
+    what:'Quartz that grew loose inside cavities in 500-million-year-old dolostone in Herkimer County, New York. Nothing anchored it, so it formed points at both ends and came out of the ground already glassy. Many hold anthraxolite, petroleum, or sealed pockets of ancient water.',
+    lore:'Known as the attunement stone and a dream stone, said to hold and carry whatever it is given. Its two points are read as a channel open at both ends.' },
+
+  { n:'Shungite', s:'Carbon-rich rock · Karelia', kw:['shungite'], ac:'var(--pearl-dim)',
+    what:'A black carbon-bearing rock from Karelia in northwestern Russia, roughly two billion years old — older than most complex life. The highest grade, noble shungite, is over 90% carbon and contains fullerenes, hollow spherical carbon molecules discovered in 1985.',
+    lore:'The shielding stone. Long associated with purification and protection, and widely sold today for EMF shielding — a claim that belongs to tradition and marketing rather than to demonstrated physics.' },
+
+  { n:'Welo Opal', s:'Hydrated silica · Ethiopia', kw:['opal'], ac:'var(--pink)',
+    what:'Not a crystal at all but hydrated amorphous silica, up to 20% water. Its play-of-colour comes from microscopic silica spheres stacked in a lattice, diffracting light like a natural prism. Ethiopian Welo is hydrophane — porous enough to drink water and go temporarily clear.',
+    lore:'The stone of the eye and of shifting fortune. Prized in the ancient world above almost anything else, and treated as a stone that shows you something different each time you look.' },
+
+  { n:'Agate', s:'Banded chalcedony', kw:['agate'], ac:'var(--gold)',
+    what:'Microcrystalline quartz that filled a cavity in stages, laying down bands as the chemistry of the fluid shifted. Every band is a record of a separate event. Named for the Achates river in Sicily, where the Greeks collected it.',
+    lore:'The steadying stone, associated with patience and slow strength — a reputation that suits something built entirely out of waiting.' },
+
+  { n:'Tourmaline', s:'Complex borosilicate', kw:['tourmaline'], ac:'var(--pink)',
+    what:'A borosilicate that comes in more colours than any other mineral, and often several at once in a single crystal — watermelon tourmaline is pink-cored and green-skinned. It is genuinely pyroelectric: warm a crystal and it develops opposite charges at its two ends.',
+    lore:'Black tourmaline is the classic guardian stone, described as taking on what you would rather not carry. Watermelon is read as the heart stone, holding two things at once.' },
+
+  { n:'Labradorite', s:'Plagioclase feldspar', kw:['labradorite'], ac:'var(--violet)',
+    what:'Grey until it catches the light, then blue, gold or green. The flash — labradorescence, named for this stone — comes from light bouncing off microscopic layers inside the crystal, not from pigment. Turn it a few degrees and it goes dark again.',
+    lore:'The stone of the aurora, and of things kept just out of sight. Traditionally worn by people who would rather not be entirely visible.' },
+
+  { n:'Amethyst', s:'Purple quartz', kw:['amethyst'], ac:'var(--violet)',
+    what:'Quartz coloured by trace iron altered by natural irradiation. The colour lives in a defect in the crystal structure rather than in a pigment, which is why strong sunlight will bleach it toward grey — permanently.',
+    lore:'From the Greek <em>amethystos</em>, "not drunk" — the Greeks cut wine cups from it believing it prevented intoxication. Still the sobriety and clear-head stone.' },
+
+  { n:'Citrine', s:'Yellow quartz', kw:['citrine'], ac:'var(--gold)',
+    what:'Natural citrine is genuinely uncommon. Most on the market is amethyst heated until the iron shifts colour — a legitimate and long-standing treatment, but worth knowing. Heat-treated material tends toward orange-brown; natural runs paler and smokier.',
+    lore:'The merchant stone, tied to abundance and circulation rather than hoarding — wealth understood as something that moves.' },
+
+  { n:'Smoky Quartz', s:'Irradiated quartz', kw:['smoky','smokey'], ac:'var(--pearl-dim)',
+    what:'Quartz darkened by natural radiation acting on trace aluminium in the crystal. The brown is structural, not an inclusion, and like amethyst it will fade in sunlight.',
+    lore:'A grounding and threshold stone, associated with the pull downward — roots, endings, and letting things settle.' },
+
+  { n:'Rose Quartz', s:'Pink quartz', kw:['rose quartz'], ac:'var(--pink)',
+    what:'The pink comes from microscopic fibres of a borosilicate mineral suspended through the quartz — which is why rose quartz is usually cloudy rather than clear, and why it almost never forms good points.',
+    lore:'The heart stone, and the one most consistently described in terms of softness rather than power.' },
+
+  { n:'Spirit Quartz', s:'Druzy-coated quartz · South Africa', kw:['spirit quartz'], ac:'var(--violet)',
+    what:'A quartz point whose entire body is coated in hundreds of tiny secondary crystals, grown in a second phase. Found chiefly in the Magaliesberg region of South Africa.',
+    lore:'Read as the community stone — one central form carrying a crowd, associated with belonging rather than solitude.' },
+
+  { n:'Super Seven', s:'Melody stone · Brazil', kw:['super seven'], ac:'var(--violet)',
+    what:'A single quartz containing amethyst, smoky and clear quartz plus cacoxenite, rutile, goethite and lepidocrocite. Genuine material comes from Espírito Santo in Brazil and the deposit is largely worked out.',
+    lore:'Named for its seven minerals and treated as seven stones speaking together — the collector\'s stone.' },
+
+  { n:'Fluorite', s:'Calcium fluoride · CaF₂', kw:['fluorite'], ac:'var(--cyan)',
+    what:'Soft — 4 on the Mohs scale, so it scratches easily — and often banded in purple and green. Fluorescence is named after this mineral: many specimens glow blue-violet under ultraviolet light.',
+    lore:'The study stone, associated with order and untangling. A reputation earned partly by how orderly its cubes are.' },
+
+  { n:'Moonstone', s:'Adularescent feldspar', kw:['moonstone'], ac:'var(--pearl)',
+    what:'A feldspar with a blue-white sheen that seems to float below the surface. The glow, adularescence, comes from light scattering between alternating layers of two feldspars grown together as the stone cooled.',
+    lore:'The traveller\'s stone and the tide stone, tied to cycles, intuition and the moon in almost every tradition that has it.' },
+
+  { n:'Pyrite', s:'Iron sulfide · FeS₂', kw:['pyrite'], ac:'var(--gold)',
+    what:'Fool\'s gold, which grows in near-perfect metallic cubes without any human help. It is genuinely metallic-looking and genuinely not gold — and it reacts with moisture over time, so it needs to stay dry.',
+    lore:'The stone of will and fire, associated with sparks and beginnings — fitting for a mineral that throws them when struck against steel.' },
+
+  { n:'Petrified Wood', s:'Silicified fossil wood', kw:['petrified wood'], ac:'var(--gold)',
+    what:'A tree that became stone. Silica-rich water moved through buried wood and replaced the organic material cell by cell, keeping the grain, the rings and sometimes the bark. The shape is wood; the substance is quartz.',
+    lore:'The memory stone and the patience stone — the one that most literally holds deep time.' },
+
+  { n:'Selenite', s:'Gypsum · CaSO₄·2H₂O', kw:['selenite','satin spar'], ac:'var(--pearl)',
+    what:'Soft enough to mark with a fingernail, and slightly water-soluble — running water will dull it and a soak will slowly dissolve it. Named for Selene, the Greek moon goddess, for its pale sheen.',
+    lore:'The clearing stone, kept for its association with light passing straight through. Traditionally used to clean other stones rather than to be cleaned.' },
+
+  { n:'Obsidian', s:'Volcanic glass', kw:['obsidian'], ac:'var(--pearl-dim)',
+    what:'Lava that cooled too fast to crystallise, so it has no crystal structure at all. It breaks in curved conchoidal fractures to an edge sharper than surgical steel — which is exactly what it was used for, for thousands of years.',
+    lore:'The mirror and the blade. Associated with unflinching truth, and with cutting things off cleanly.' },
+
+  { n:'Tiger\'s Eye', s:'Silicified crocidolite', kw:['tiger'], ac:'var(--gold)',
+    what:'Fibrous blue crocidolite slowly replaced by quartz, keeping the fibre structure. The band of moving light — chatoyancy — is those parallel fibres catching the light together, like the sheen on silk.',
+    lore:'The watchman\'s stone, tied to courage and clear seeing, named for the eye it so obviously resembles.' },
+
+  { n:'Calcite', s:'Calcium carbonate · CaCO₃', kw:['calcite'], ac:'var(--cyan)',
+    what:'Soft, and the classic double-refraction mineral: look through a clear rhomb of optical calcite and everything beneath it appears twice. It fizzes in weak acid, which is the standard field test.',
+    lore:'The amplifier and the cleanser, associated with clearing stagnation — and, appropriately for a stone that doubles what you see, with new perspective.' },
+
+  { n:'Copper', s:'Native element · Cu', kw:['copper'], ac:'var(--gold)',
+    what:'One of very few metals that occurs in nature as itself. The first metal humans worked, roughly ten thousand years ago, and still one of the best conductors of heat and electricity there is. Bare copper tarnishes — that patina is oxidation, not damage.',
+    lore:'The conductor. Traditionally the metal that carries and joins, which is why so much of it is wound around stones rather than used alone.' }
+];
+
+const box = document.getElementById('stones');
+const idx = document.getElementById('idx');
+
+const rendered = STONES.map(st => {
+  const hits = MICA.OK ? MICA.byWords(st.kw) : [];
+  return { st, hits };
+}).filter(r => r.hits.length || !MICA.OK);
+
+box.innerHTML = rendered.map(({ st, hits }, i) => `
+  <details class="stone" id="s${i}" style="--ac:${st.ac}">
+    <summary>
+      <span class="nm">${st.n}</span>
+      <span class="sci">${st.s}</span>
+      <span class="cnt">${hits.length} on the shelf</span>
+    </summary>
+    <div class="body">
+      <div class="lab">What it is</div>
+      <p>${st.what}</p>
+      <div class="lab lore">In the traditions</div>
+      <p>${st.lore}</p>
+      <div class="grid" id="g${i}"></div>
+    </div>
+  </details>`).join('');
+
+rendered.forEach(({ hits }, i) => MICA.render('g' + i, MICA.pick(hits, 3)));
+
+idx.innerHTML = rendered.map(({ st }, i) => `<a href="#s${i}">${st.n}</a>`).join('');
+
+// opening from the index should actually open the entry
+idx.addEventListener('click', e => {
+  const a = e.target.closest('a'); if (!a) return;
+  const d = document.querySelector(a.getAttribute('href'));
+  if (d) d.open = true;
+});
+
+MICA.stamp('asof');
+</script>
+</body>
+</html>

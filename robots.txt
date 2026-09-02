@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://micamagik.github.io/sitemap.xml

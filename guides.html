@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crystal Guides ✦ Mica Magik</title>
+<meta name="description" content="Plain guides to buying and caring for crystals — how to spot a real Herkimer, which stones water and sunlight ruin, and what actually drives price.">
+<meta property="og:title" content="Crystal Guides ✦ Mica Magik">
+<meta property="og:description" content="How to spot a real Herkimer, which stones water ruins, and what actually drives price.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://micamagik.github.io/guides.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=IBM+Plex+Mono:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mica.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="bar">
+  <a class="brand holo" href="index.html">Mica Magik</a>
+  <nav>
+    <a href="index.html">Shop</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="guides.html" aria-current="page">Guides</a>
+    <a href="https://www.youtube.com/@micamagik" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.themysticalspiralstore.com" target="_blank" rel="noopener sponsored">Store ↗</a>
+  </nav>
+</div>
+
+<header class="wrap" style="text-align:center;padding:clamp(26px,5vw,52px) 22px 0">
+  <h1 class="holo">Guides</h1>
+  <div class="tag">✦ What to look for · What not to do ✦</div>
+  <p class="lede">Practical notes on buying and keeping crystals. No claims about what a
+    stone will do for you — just what it is, how to tell it's genuine, and how not to
+    wreck it.</p>
+  <div class="rule"></div>
+</header>
+
+<main class="wrap">
+  <section style="margin-top:clamp(28px,5vw,46px)">
+    <div class="guides">
+
+      <a class="guide" href="guide-herkimer.html">
+        <div class="k">✦ Buying guide</div>
+        <h3>How to tell a real Herkimer diamond</h3>
+        <p>Why they're double-terminated, what the black and bubble inclusions actually
+          are, and how to spot cut-and-polished quartz sold at Herkimer prices.</p>
+      </a>
+
+      <a class="guide" href="guide-care.html">
+        <div class="k">✦ Care guide</div>
+        <h3>Which crystals you should never put in water</h3>
+        <p>Some dissolve, some rust, some drink it and go cloudy. Plus why salt is the
+          most over-recommended cleaning method there is.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2 class="holo">On the shelf now</h2>
+      <p>✦ A DIFFERENT HANDFUL EVERY TIME ✦</p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div style="text-align:center;margin-top:26px">
+      <button class="btn ghost" id="shuffle" type="button">Shuffle ⟳</button>
+    </div>
+  </section>
+
+  <section class="yt-band">
+    <h2>Watch on YouTube</h2>
+    <p>Crystal finds, hauls and slow looks at the stones — over on the channel.</p>
+    <div class="cta-row">
+      <a class="btn yt" href="https://www.youtube.com/@micamagik" target="_blank" rel="noopener">▶ @micamagik</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="asof" id="asof"></div>
+  <div>Every piece ships from The Mystical Spiral Store.</div>
+  <p class="disclosure">Mica Magik links to The Mystical Spiral Store. Prices and availability
+    are a snapshot and change without notice — always check the store page before buying.</p>
+</footer>
+
+<script src="products.js"></script>
+<script src="mica.js"></script>
+<script>
+  function draw() { MICA.render('grid', MICA.pick(MICA.live, 8)); }
+  document.getElementById('shuffle').addEventListener('click', draw);
+  draw();
+  MICA.stamp('asof');
+</script>
+</body>
+</html>
