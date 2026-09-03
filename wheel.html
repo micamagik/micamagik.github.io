@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Signal Wheel ✦ Find Your Stone by Birth Date ✦ Mica Magik</title>
+<meta name="description" content="An original twelve-station wheel of the year. Enter your birth date and find your stone — a system invented here, not the traditional birthstone list.">
+<meta property="og:title" content="The Signal Wheel ✦ Find Your Stone">
+<meta property="og:description" content="Twelve stations, twelve stones, one year. Enter your birth date and see where you land.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://micamagik.github.io/wheel.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=IBM+Plex+Mono:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Silkscreen&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mica.css">
+<style>
+  .finder{max-width:560px;margin:clamp(22px,4vw,34px) auto 0;padding:20px;border-radius:14px;
+    border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+    text-align:center}
+  .finder label{display:block;font-family:var(--pixel);font-size:.54rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--pearl-dim);margin-bottom:10px}
+  .finder .row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+  .finder select{font-family:var(--mono);font-size:.88rem;color:var(--pearl);background:#120e22;
+    border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer}
+  .result{margin-top:clamp(24px,4vw,36px);padding:clamp(20px,3.4vw,30px);border-radius:14px;
+    border:1px solid var(--ac,var(--pink));position:relative;overflow:hidden;
+    background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.012))}
+  .result:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background:radial-gradient(110% 90% at 12% 0%,var(--ac,transparent),transparent 62%)}
+  .result .st{position:relative;z-index:2}
+  .result .dates{font-family:var(--pixel);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ac,var(--gold))}
+  .result h2{font-family:var(--arcade);font-weight:900;font-size:clamp(1.2rem,3.6vw,1.9rem);
+    letter-spacing:.04em;text-transform:uppercase;margin:.5rem 0}
+  .result .stone{font-family:var(--display);font-size:1.15rem;color:var(--pearl)}
+  .result p{color:#cfc8e6;margin-top:.9rem;font-size:.94rem}
+  .result .pair{font-family:var(--pixel);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--pearl-dim);margin-top:1rem}
+
+  .wheel{display:grid;gap:11px;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));margin-top:16px}
+  .station{padding:16px 17px;border-radius:11px;border:1px solid var(--line);cursor:pointer;
+    background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));transition:.2s;
+    text-align:left}
+  .station:hover{transform:translateY(-3px);border-color:var(--ac,var(--pink))}
+  .station .d{font-family:var(--pixel);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ac,var(--gold))}
+  .station h3{font-family:var(--arcade);font-weight:700;font-size:.85rem;margin:.5rem 0 .35rem;
+    letter-spacing:.03em;text-transform:uppercase}
+  .station .s{font-family:var(--display);font-size:.92rem;color:var(--pearl-dim)}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="bar">
+  <a class="brand holo" href="index.html">Mica Magik</a>
+  <nav><a href="index.html">Shop</a><a href="wheel.html" aria-current="page">The Wheel</a><a href="catalogue.html">Catalogue</a><a href="guides.html">Guides</a><a href="field-guide.html">Field Guide</a><a href="crystal-database.html">Stone Index</a><a href="https://www.themysticalspiralstore.com" target="_blank" rel="noopener sponsored">Store ↗</a></nav>
+</div>
+
+<header class="wrap narrow" style="text-align:center;padding:clamp(26px,5vw,52px) 22px 0">
+  <h1 class="holo">The Signal Wheel</h1>
+  <div class="tag">✦ Twelve stations · Twelve stones · One year ✦</div>
+  <p class="lede">The traditional birthstone list was set by a jewellers' association in 1912
+    and has been edited by committee ever since. This is a different wheel — twelve stations
+    named for what the year is actually doing, each with a stone that matches it. We made it
+    up. That's the point.</p>
+
+  <div class="finder">
+    <label for="m">Find your station</label>
+    <div class="row">
+      <select id="m" aria-label="Birth month"></select>
+      <select id="d" aria-label="Birth day"></select>
+    </div>
+  </div>
+</header>
+
+<main class="wrap narrow">
+  <div id="out"></div>
+
+  <section>
+    <div class="head">
+      <h2 class="holo">The whole wheel</h2>
+      <p>✦ TAP ANY STATION ✦</p>
+    </div>
+    <div class="wheel" id="wheel"></div>
+  </section>
+
+  <section>
+    <div class="head">
+      <h2 class="holo">How this was built</h2>
+    </div>
+    <article>
+      <p>The stations begin on the 5th rather than the 1st, so the wheel sits deliberately
+        out of step with both the calendar months and the zodiac. Nothing here is inherited.
+        The names describe what light and weather are doing across the year in the northern
+        hemisphere, and each stone was chosen for a real physical property that echoes it —
+        obsidian for the Veil because it is volcanic glass that takes an edge, petrified wood
+        for the Amber Hour because it is a tree that became quartz.</p>
+      <p>It is a made-up system, and we would rather say so than pretend otherwise. Read it
+        the way you would read a good horoscope: as a frame that makes you look at something
+        more carefully than you otherwise would.</p>
+    </article>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="asof" id="asof"></div>
+  <div>Every piece ships from The Mystical Spiral Store.</div>
+  <p class="disclosure">Mica Magik links to The Mystical Spiral Store. Prices and availability
+    are a snapshot and change without notice — always check the store page before buying. ·
+    <a href="https://www.youtube.com/@micamagik" target="_blank" rel="noopener">YouTube</a></p>
+</footer>
+
+<script src="products.js"></script>
+<script src="mica.js"></script>
+<script>
+/* Stations start on the 5th so the wheel is visibly its own thing rather than
+   a relabelled zodiac. Ranges are stored as [startMonth, startDay] and the
+   lookup walks backwards to the most recent start, which handles the
+   December-into-January station without a special case. */
+const WHEEL = [
+  { m:1,  d:5,  name:'The Kindling',   stone:'Pyrite',         kw:['pyrite'], pair:'Citrine', ac:'var(--gold)',
+    text:'The year starts cold and you light something anyway. This is the station of the first spark — not the fire, the striking of it. Pyrite is the stone: iron sulfide that grows in perfect cubes and throws real sparks against steel. It looks like gold and is not, which is its own kind of lesson about starting things.' },
+  { m:2,  d:4,  name:'The Deep Water', stone:'Shungite',       kw:['shungite'], pair:'Obsidian', ac:'var(--pearl-dim)',
+    text:'The oldest, quietest part of the year, when nothing on the surface is moving. Shungite belongs here — a black carbon rock from Karelia roughly two billion years old, older than nearly everything alive. A stone for the stretch where the work is happening somewhere you cannot see it.' },
+  { m:3,  d:6,  name:'The Thaw',       stone:'Moonstone',      kw:['moonstone'], pair:'Selenite', ac:'var(--pearl)',
+    text:'Everything softening at once, and light behaving strangely on wet ground. Moonstone does exactly that — its blue-white sheen floats below the surface rather than sitting on it, scattered between microscopic layers grown together as the stone cooled. Tilt it and the glow moves like weather.' },
+  { m:4,  d:5,  name:'The First Light',stone:'Citrine',        kw:['citrine'], pair:'Clear Quartz', ac:'var(--gold)',
+    text:'The turn where the light gets genuinely warm and the day outruns the night. Citrine holds that colour. Worth knowing that most citrine on the market is amethyst that was heated until its iron shifted — a stone that changed under warmth, which is on the nose for this station.' },
+  { m:5,  d:6,  name:'The Long Green', stone:'Fluorite',       kw:['fluorite'], pair:'Prasiolite', ac:'var(--cyan)',
+    text:'Growth outpacing order. Everything is coming up faster than it can be arranged, and this is the station for sorting it. Fluorite is banded green and purple, grows in near-perfect cubes, and gave its name to fluorescence — it glows under ultraviolet light like something keeping a secret.' },
+  { m:6,  d:5,  name:'The High Sun',   stone:'Clear Quartz',   kw:['clear quartz','crystal quartz'], pair:'Herkimer Diamond', ac:'var(--pearl)',
+    text:'The longest light of the year, and nothing hidden. Clear quartz is the station stone because it adds no colour of its own — it just passes everything through. It is also piezoelectric: press it and it makes a small voltage. The plainest stone on the wheel, doing something genuinely strange.' },
+  { m:7,  d:7,  name:'The Turning',    stone:"Tiger's Eye",    kw:['tiger'], pair:'Carnelian', ac:'var(--gold)',
+    text:'The high point holds, then tips. This is the station of noticing it before anyone else does. Tiger\'s eye is fibrous blue crocidolite slowly replaced by quartz, keeping the fibre structure — so a band of light moves across it as you turn it, like an eye tracking something.' },
+  { m:8,  d:7,  name:'The Gathering',  stone:'Agate',          kw:['agate'], pair:'Calcite', ac:'var(--gold)',
+    text:'Bringing in, layer by layer, what the year has actually made. Agate is built the same way: banded chalcedony that filled a cavity in stages, each band laid down as the chemistry of the fluid shifted. Every line in it is a separate event. Nothing about it happened quickly.' },
+  { m:9,  d:7,  name:'The Amber Hour', stone:'Petrified Wood', kw:['petrified wood'], pair:'Tourmaline', ac:'var(--gold)',
+    text:'Late gold light and a sense that things are being kept. Petrified wood is the station stone and the most literal object on the wheel — a tree replaced cell by cell with silica, holding its grain and rings while becoming quartz. The shape is wood. The substance is stone.' },
+  { m:10, d:8,  name:'The Veil',       stone:'Obsidian',       kw:['obsidian'], pair:'Labradorite', ac:'var(--pearl-dim)',
+    text:'The year goes thin and dark early. Obsidian is lava that cooled too fast to crystallise, so it has no internal structure at all — and it breaks in curved fractures to an edge sharper than surgical steel. A mirror and a blade in the same object, which is the right pair for this stretch.' },
+  { m:11, d:7,  name:'The Static',     stone:'Tourmaline',     kw:['tourmaline'], pair:'Shungite', ac:'var(--pink)',
+    text:'Everything crowded and charged and slightly too loud. Tourmaline is genuinely pyroelectric — warm a crystal and it develops opposite charges at its two ends, enough to attract ash. Black tourmaline is the classic guardian stone, and this is the station that wants one.' },
+  { m:12, d:7,  name:'The Long Night', stone:'Herkimer Diamond', kw:['herkimer'], pair:'Amethyst', ac:'var(--cyan)',
+    text:'The dark at its fullest, and the light kept indoors. Herkimers grew loose inside sealed cavities in 500-million-year-old New York dolostone, pointed at both ends, some holding water trapped since before there were trees. A small bright thing that formed in total darkness.' }
+];
+
+const MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
+const DAYS_IN = [31,29,31,30,31,30,31,31,30,31,30,31];
+
+/* day-of-year style ordinal that ignores leap years — good enough for a wheel */
+const ord = (m, d) => m * 100 + d;
+
+function stationFor(m, d) {
+  const key = ord(m, d);
+  let found = WHEEL[WHEEL.length - 1];          // before the first start = last station
+  for (const st of WHEEL) if (key >= ord(st.m, st.d)) found = st;
+  return found;
+}
+
+function rangeLabel(i) {
+  const a = WHEEL[i], b = WHEEL[(i + 1) % WHEEL.length];
+  const end = new Date(2001, b.m - 1, b.d - 1);
+  return `${MONTHS[a.m - 1].slice(0,3)} ${a.d} – ${MONTHS[end.getMonth()].slice(0,3)} ${end.getDate()}`;
+}
+
+/* ---- controls ---- */
+const ms = document.getElementById('m'), ds = document.getElementById('d');
+ms.innerHTML = MONTHS.map((n, i) => `<option value="${i+1}">${n}</option>`).join('');
+function fillDays() {
+  const n = DAYS_IN[ms.value - 1], keep = Math.min(ds.value || 1, n);
+  ds.innerHTML = Array.from({length:n}, (_, i) => `<option value="${i+1}">${i+1}</option>`).join('');
+  ds.value = keep;
+}
+const today = new Date();
+ms.value = today.getMonth() + 1; fillDays(); ds.value = today.getDate();
+
+function show(st) {
+  const i = WHEEL.indexOf(st);
+  document.getElementById('out').innerHTML = `
+    <div class="result" style="--ac:${st.ac}">
+      <div class="st">
+        <div class="dates">${rangeLabel(i)}</div>
+        <h2>${st.name}</h2>
+        <div class="stone">${st.stone}</div>
+        <p>${st.text}</p>
+        <div class="pair">Companion stone · ${st.pair}</div>
+        <div class="grid" id="sg" style="margin-top:18px"></div>
+      </div>
+    </div>`;
+  MICA.render('sg', MICA.pick(MICA.byWords(st.kw), 4));
+}
+
+function update() { show(stationFor(+ms.value, +ds.value)); }
+ms.addEventListener('change', () => { fillDays(); update(); });
+ds.addEventListener('change', update);
+update();
+
+/* ---- the full wheel ---- */
+document.getElementById('wheel').innerHTML = WHEEL.map((st, i) => `
+  <div class="station" data-i="${i}" style="--ac:${st.ac}">
+    <div class="d">${rangeLabel(i)}</div>
+    <h3>${st.name}</h3>
+    <div class="s">${st.stone}</div>
+  </div>`).join('');
+
+document.getElementById('wheel').addEventListener('click', e => {
+  const s = e.target.closest('.station'); if (!s) return;
+  const st = WHEEL[+s.dataset.i];
+  ms.value = st.m; fillDays(); ds.value = st.d;
+  show(st);
+  document.getElementById('out').scrollIntoView({ behavior:'smooth', block:'center' });
+});
+
+MICA.stamp('asof');
+</script>
+</body>
+</html>
